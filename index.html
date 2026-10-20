@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Alfred T. Labrador | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --side:#0f172a;
+    --side-2:#1e293b;
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --line:#e5eaf2;
+    --green:#10b981;
+    --green-d:#059669;
+    --amber:#f59e0b;
+    --blue:#3b82f6;
+    --radius:20px;
+    --shadow:0 10px 30px rgba(15,23,42,.07);
+    --shadow-lg:0 18px 44px rgba(15,23,42,.15);
+    --sw:290px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:20px}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif}
+
+  /* ---------- SIDEBAR ---------- */
+  .side{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:linear-gradient(180deg,var(--side),var(--side-2));
+    color:#fff;display:flex;flex-direction:column;align-items:center;padding:38px 22px 26px;z-index:1000;overflow-y:auto}
+  .pfp{width:168px;height:168px;border-radius:50%;padding:5px;background:conic-gradient(var(--green),var(--blue),var(--amber),var(--green));
+    box-shadow:0 0 0 8px rgba(16,185,129,.12),0 16px 36px rgba(0,0,0,.45);flex-shrink:0}
+  .pfp-in{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--side-2);border:5px solid var(--side);
+    display:flex;align-items:center;justify-content:center}
+  .pfp-in b{font-family:'Sora',sans-serif;font-size:2.8rem;color:rgba(255,255,255,.25)}
+  .pfp-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%}
+  .side h2{font-size:1.15rem;text-align:center;margin-top:20px;line-height:1.3}
+  .side .sub{font-size:.8rem;color:var(--green);text-align:center;font-weight:500;margin-top:4px}
+  .side .yr{font-size:.74rem;color:#94a3b8;margin-top:2px;text-align:center}
+  .side nav{width:100%;margin-top:30px}
+  .side nav a{display:flex;align-items:center;gap:14px;padding:11px 16px;margin-bottom:4px;border-radius:12px;color:#cbd5e1;
+    font-size:.93rem;font-weight:500;transition:.25s}
+  .side nav a span{width:22px;text-align:center}
+  .side nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+  .side nav a.active{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(16,185,129,.35)}
+  .side .foot{margin-top:auto;padding-top:20px;font-size:.72rem;color:#64748b;text-align:center}
+
+  .topbar{display:none}
+  #menu-toggle{display:none}
+
+  /* ---------- MAIN ---------- */
+  main{margin-left:var(--sw)}
+  section{padding:84px 52px}
+  .wrap{max-width:900px;margin:auto}
+  .head{margin-bottom:36px}
+  .head small{color:var(--green-d);font-weight:600;letter-spacing:2px;font-size:.78rem;text-transform:uppercase}
+  .head h2{font-size:2.2rem;font-weight:800;margin-top:2px;line-height:1.2}
+  .head .bar{width:56px;height:5px;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:5px;margin-top:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);transition:.3s}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+  .reveal{opacity:0;transform:translateY(28px);transition:.8s}
+  .reveal.show{opacity:1;transform:none}
+
+  /* ---------- HOME ---------- */
+  #home{min-height:100vh;display:flex;align-items:center;padding-top:60px;padding-bottom:60px}
+  .hero{position:relative;overflow:hidden;border-radius:30px;padding:60px 52px;color:#fff;
+    background:linear-gradient(135deg,#0f172a 0%,#134e4a 55%,#10b981 130%);box-shadow:var(--shadow-lg)}
+  .hero::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-90px;top:-110px;
+    background:radial-gradient(circle,rgba(245,158,11,.35),transparent 70%)}
+  .hero::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;left:-80px;bottom:-110px;
+    background:radial-gradient(circle,rgba(59,130,246,.35),transparent 70%)}
+  .hero>*{position:relative;z-index:1}
+  .hello{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 18px;border-radius:40px;
+    font-size:.85rem;font-weight:500}
+  .hero h1{font-size:3.1rem;line-height:1.15;font-weight:800;margin:20px 0 10px}
+  .hero h1 span{color:var(--amber)}
+  .hero .role{font-size:1.1rem;color:#d1fae5;font-weight:500}
+  .hero p.txt{max-width:520px;color:#cbd5e1;margin-top:14px}
+  .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{padding:13px 30px;border-radius:50px;font-weight:600;font-size:.93rem;transition:.3s}
+  .btn.p{background:var(--amber);color:var(--side);box-shadow:0 8px 22px rgba(245,158,11,.4)}
+  .btn.p:hover{transform:translateY(-4px)}
+  .btn.s{border:1px solid rgba(255,255,255,.5);color:#fff}
+  .btn.s:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
+  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center;box-shadow:var(--shadow)}
+  .chip .e{font-size:1.9rem}
+  .chip strong{display:block;font-family:'Sora',sans-serif;font-size:.98rem;margin-top:4px}
+  .chip span{font-size:.8rem;color:var(--muted)}
+
+  /* ---------- ABOUT ---------- */
+  .about{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+  .card h3{font-size:1.3rem;margin-bottom:10px}
+  .card h3 em{font-style:normal;color:var(--green-d)}
+  .card p{color:var(--muted);font-size:.97rem;margin-bottom:12px}
+  .row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border:none}
+  .row .i{width:40px;height:40px;border-radius:12px;flex-shrink:0;background:#ecfdf5;display:flex;align-items:center;justify-content:center}
+  .row small{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;line-height:1.3}
+  .row strong{font-weight:600;font-size:.93rem;line-height:1.4;display:block}
+
+  /* ---------- EDUCATION ---------- */
+  .tl{position:relative;padding-left:44px}
+  .tl::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:3px;background:linear-gradient(var(--green),var(--blue));border-radius:3px}
+  .tl-item{position:relative;margin-bottom:20px}
+  .tl-item:last-child{margin-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-40px;top:30px;width:20px;height:20px;border-radius:50%;background:#fff;
+    border:5px solid var(--green);box-shadow:0 0 0 5px rgba(16,185,129,.15)}
+  .tag{display:inline-block;background:#ecfdf5;color:var(--green-d);font-size:.76rem;font-weight:600;padding:2px 14px;border-radius:40px;margin-bottom:8px}
+  .tl-item h3{font-size:1.1rem;margin-bottom:2px}
+  .tl-item p{margin:0;font-size:.93rem}
+  .tl-item.now .card{background:linear-gradient(135deg,var(--side),#134e4a);color:#fff;border:none}
+  .tl-item.now h3{color:var(--amber)}
+  .tl-item.now p{color:#cbd5e1}
+  .tl-item.now .tag{background:var(--amber);color:var(--side)}
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .ach-card{border-radius:var(--radius);overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:.3s}
+  .ach-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+  .ach-img{height:380px;overflow:hidden;background:var(--line)}
+  .ach-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%;transition:transform .6s;transform-origin:center top}
+  .ach-card:hover img{transform:scale(1.06)}
+  .ach-card .cap{padding:16px 22px;font-family:'Sora',sans-serif;font-weight:600;font-size:.98rem;border-top:4px solid var(--green)}
+
+  /* ---------- GOALS ---------- */
+  .goals{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .goals .sub{font-size:.78rem;color:var(--green-d);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+  .goals li{position:relative;padding:11px 0 11px 38px;border-bottom:1px dashed var(--line);font-size:.95rem;color:var(--muted)}
+  .goals li:last-child{border:none}
+  .goals li::before{content:"✔";position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;
+    font-size:.72rem;display:flex;align-items:center;justify-content:center}
+  .goals .dark{background:linear-gradient(160deg,var(--side),#134e4a);border:none;color:#fff}
+  .goals .dark h3{color:var(--amber)}
+  .goals .dark .sub{color:#6ee7b7}
+  .goals .dark li{color:#cbd5e1;border-color:rgba(255,255,255,.15)}
+  .goals .dark li::before{background:var(--amber);color:var(--side)}
+
+  /* ---------- SKILLS ---------- */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .skill{text-align:center;padding:42px 30px}
+  .skill .ico{width:96px;height:96px;margin:0 auto 20px;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;
+    transform:rotate(-6deg);transition:.4s}
+  .skill:hover .ico{transform:rotate(0) scale(1.1)}
+  .skill.a .ico{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+  .skill.b .ico{background:linear-gradient(135deg,#d1fae5,#a7f3d0)}
+  .skill h3{font-size:1.5rem;margin-bottom:6px}
+  .skill p{margin:0;max-width:300px;margin-inline:auto}
+
+  /* ---------- CONTACT ---------- */
+  .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .c-card{display:block;text-align:center;padding:30px 20px}
+  .c-card .ic{width:62px;height:62px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--blue));
+    display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 8px 20px rgba(16,185,129,.35)}
+  .c-card small{display:block;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .c-card strong{display:block;font-weight:600;font-size:.95rem;word-break:break-word}
+  .copy{text-align:center;margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  .copy span{color:var(--green-d);font-weight:600}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .side{transform:translateX(-100%);transition:.4s;width:280px}
+    #menu-toggle:checked ~ .side{transform:none;box-shadow:0 0 60px rgba(0,0,0,.5)}
+    .topbar{display:flex;position:fixed;top:0;left:0;right:0;height:60px;background:var(--side);z-index:900;align-items:center;
+      justify-content:space-between;padding:0 18px;color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+    .topbar b{font-family:'Sora',sans-serif}
+    .topbar b span{color:var(--green)}
+    .burger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:8px}
+    .burger i{width:24px;height:3px;background:var(--green);border-radius:3px}
+    main{margin-left:0;padding-top:60px}
+    section{padding:70px 22px}
+    #home{min-height:auto}
+    .hero{padding:40px 26px}
+    .hero h1{font-size:2.3rem}
+    .about,.goals,.skills,.ach{grid-template-columns:1fr}
+    .contact,.chips{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){
+    .hero h1{font-size:1.9rem}
+    .head h2{font-size:1.8rem}
+    .ach-img{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="menu-toggle">
+
+<!-- MOBILE TOP BAR -->
+<div class="topbar">
+  <b>James<span>.</span></b>
+  <label for="menu-toggle" class="burger" aria-label="Menu"><i></i><i></i><i></i></label>
+</div>
+
+<!-- SIDEBAR WITH PROFILE PICTURE -->
+<aside class="side">
+  <div class="pfp">
+    <div class="pfp-in">
+      <b>JL</b>
+      <!-- PROFILE PICTURE: put your photo in the same folder as this file and name it image1.png -->
+      <img src="image3.png" alt="James Alfred T. Labrador - Profile Picture" onerror="this.style.display='none'">
+    </div>
+  </div>
+  <h2>James Alfred T. Labrador</h2>
+  <div class="sub">BSBA Financial Management</div>
+  <div class="yr">1st Year Student</div>
+  <nav>
+    <a href="#home" class="active"><span>🏠</span>Home</a>
+    <a href="#about"><span>👤</span>About Me</a>
+    <a href="#education"><span>🎓</span>Education</a>
+    <a href="#achievements"><span>🏆</span>Achievements</a>
+    <a href="#goals"><span>🎯</span>Goals</a>
+    <a href="#skills"><span>⚡</span>Skills</a>
+    <a href="#contact"><span>✉️</span>Contact</a>
+  </nav>
+  <div class="foot">© 2026 James A. Labrador</div>
+</aside>
+
+<main>
+
+<!-- HOME -->
+<section id="home">
+  <div class="wrap">
+    <div class="hero reveal">
+      <span class="hello">👋 Welcome to my portfolio</span>
+      <h1>Hi, I'm <span>James Alfred T. Labrador</span></h1>
+      <p class="role">1st Year BSBA Major in Financial Management</p>
+      <p class="txt">A student who loves games and sports, and is learning to manage money, make smart decisions, and build a future in finance through discipline and hard work.</p>
+      <div class="btns">
+        <a href="#about" class="btn p">About Me</a>
+        <a href="#contact" class="btn s">Contact Me</a>
+      </div>
+    </div>
+    <div class="chips">
+      <div class="chip reveal"><div class="e">📊</div><strong>Finance</strong><span>My chosen path</span></div>
+      <div class="chip reveal"><div class="e">🎮</div><strong>Gamer</strong><span>Strategy &amp; teamwork</span></div>
+      <div class="chip reveal"><div class="e">🏃</div><strong>Athletics</strong><span>Discipline &amp; stamina</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="head reveal"><small>Get to know me</small><h2>About Me</h2><div class="bar"></div></div>
+    <div class="about">
+      <div class="card reveal">
+        <h3>Hello, I'm <em>James</em>!</h3>
+        <p>I am a 1st year BSBA student majoring in Financial Management. I am interested in how money, business, and good planning work together.</p>
+        <p>Outside the classroom, I enjoy gaming and athletics. Gaming taught me teamwork and quick thinking, while sports taught me discipline, stamina, and never giving up. I bring these same habits into my studies.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Quick Facts</h3>
+        <div class="row"><div class="i">🧑</div><div><small>Name</small><strong>James Alfred T. Labrador</strong></div></div>
+        <div class="row"><div class="i">🎓</div><div><small>Course</small><strong>BSBA Financial Management</strong></div></div>
+        <div class="row"><div class="i">📘</div><div><small>Year Level</small><strong>1st Year</strong></div></div>
+        <div class="row"><div class="i">⭐</div><div><small>Interests</small><strong>Gaming &amp; Athletics</strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:#eef2f7">
+  <div class="wrap">
+    <div class="head reveal"><small>My journey</small><h2>Education</h2><div class="bar"></div></div>
+    <div class="tl">
+      <div class="tl-item reveal">
+        <div class="card">
+          <span class="tag">2014 – 2019</span>
+          <h3>Elementary</h3>
+          <p>Timalang Elementary School</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="card">
+          <span class="tag">2020 – 2024</span>
+          <h3>Junior High School</h3>
+          <p>Timalang National High School</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="card">
+          <span class="tag">2025 – 2026</span>
+          <h3>Senior High School</h3>
+          <p>Matthew Jackson Inc., Sibugay</p>
+        </div>
+      </div>
+      <div class="tl-item now reveal">
+        <div class="card">
+          <span class="tag">2026-Present</span>
+          <h3>College – BSBA Financial Management</h3>
+          <p>1st Year Student</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="head reveal"><small>Recognition</small><h2>Achievements</h2><div class="bar"></div></div>
+    <div class="ach">
+      <!-- Put your achievement photos in the same folder: image2.png and image3.png -->
+      <div class="ach-card reveal">
+        <div class="ach-img"><img src="image1.png" alt="Achievement 1"></div>
+        <div class="cap">Achievement 1</div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-img"><img src="image2.png" alt="Achievement 2"></div>
+        <div class="cap">Achievement 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section id="goals" style="background:#eef2f7">
+  <div class="wrap">
+    <div class="head reveal"><small>My vision</small><h2>Goals</h2><div class="bar"></div></div>
+    <div class="goals">
+      <div class="card reveal">
+        <h3>Short-Term Goals</h3>
+        <div class="sub">1st Year Targets</div>
+        <ul>
+          <li>Get good grades in all subjects</li>
+          <li>Learn the basics of accounting and finance</li>
+          <li>Balance my studies, sports, and gaming</li>
+          <li>Build good study habits and friendships</li>
+        </ul>
+      </div>
+      <div class="card dark reveal">
+        <h3>Long-Term Goals</h3>
+        <div class="sub">Career Direction</div>
+        <ul>
+          <li>Graduate with a degree in Financial Management</li>
+          <li>Build a career in finance</li>
+          <li>Become a responsible financial manager</li>
+          <li>Make my family proud</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="head reveal"><small>What I can do</small><h2>Skills</h2><div class="bar"></div></div>
+    <div class="skills">
+      <div class="card skill a reveal">
+        <div class="ico">🎮</div>
+        <h3>Gamer</h3>
+        <p>Quick reactions, strategy, and teamwork built from playing with friends.</p>
+      </div>
+      <div class="card skill b reveal">
+        <div class="ico">🏃</div>
+        <h3>Athletics</h3>
+        <p>Strong, active, and disciplined, with a never-give-up attitude.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#eef2f7">
+  <div class="wrap">
+    <div class="head reveal"><small>Let's talk</small><h2>Contact Me</h2><div class="bar"></div></div>
+    <div class="contact">
+      <!-- Replace the details below with your real contact info -->
+      <a class="card c-card reveal" href="mailto:youremail@gmail.com">
+        <div class="ic">✉️</div><small>Email</small><strong>labradorjames2008@gmail.com</strong>
+      </a>
+      <a class="card c-card reveal" href="tel:+639978636555">
+        <div class="ic">📞</div><small>Phone</small><strong>+63 9978636555</strong>
+      </a>
+      <a class="card c-card reveal" href="#contact">
+        <div class="ic">💬</div><small>Facebook</small><strong>James Alfred Labrador</strong>
+      </a>
+    </div>
+    <div class="copy">© 2026 <span>James Alfred T. Labrador</span> • BSBA Financial Management • All rights reserved.</div>
+  </div>
+</section>
+
+</main>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(i => io.observe(i));
+  } else {
+    items.forEach(i => i.classList.add('show'));
+  }
+  const secs = [...document.querySelectorAll('section')];
+  const links = document.querySelectorAll('.side nav a');
+  function setActive(){
+    let cur = 'home';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 220) cur = s.id; });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  }
+  addEventListener('scroll', setActive);
+  setActive();
+  links.forEach(a => a.addEventListener('click', () => document.getElementById('menu-toggle').checked = false));
+</script>
+</body>
+</html>
